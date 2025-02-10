@@ -1,0 +1,78 @@
+@import './base.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f4ead9;
+}
+
+@media (min-width: 1024px) {
+}
+
+/* formulaires */
+
+.form-section__title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+  border-bottom: 4px solid #00aa4f;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+
+.form__input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+}
+
+.form__input {
+  border: 1px solid #bfc4c1;
+  padding: 2px 6px;
+}
+
+.form__error-message {
+  color: red;
+  font-size: 0.85rem;
+}
+
+/* boutons */
+
+button,
+input[type='submit'],
+.button {
+  background-color: #00aa4f;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 8px 0;
+  transition: all 200ms ease-in-out;
+  width: max-content;
+  margin: 0;
+}
+
+button:hover,
+input[type='submit']:hover,
+.button:hover {
+  background-color: #007a3d;
+}
+
+.button--centered {
+  margin: 0 auto !important;
+}
