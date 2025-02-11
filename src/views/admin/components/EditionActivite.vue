@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue'
-import FormulaireActivite from './FormulaireActivite.vue'
+import FormulaireActivite from '../../../components/admin/FormulaireActivite.vue'
 
 const props = defineProps({
   nom: String,
@@ -57,5 +57,5 @@ const activite = computed(() => {
 </script>
 
 <template>
-  <FormulaireActivite titre="Modifier l'activite" :soumettreForm="eidterActivite" />
+  <FormulaireActivite titre="Modifier l'activite" :soumettreForm="editerActivite" />
 </template>

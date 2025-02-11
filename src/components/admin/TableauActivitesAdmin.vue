@@ -1,10 +1,10 @@
 <script setup>
 import { useActivitesStore } from '@/store/storeActivites'
-import { computed, onMounted, ref } from 'vue'
-import Tag from '../../../components/shared/Tag.vue'
-import CardActivite from '@/utils/ActiviteCard.vue'
-import ModalFlottant from '@/components/shared/ModalFullPage.vue'
-import FormulaireActivite from '../../../components/admin/FormulaireActivite.vue'
+import { onMounted, ref } from 'vue'
+import Tag from '@/components/shared/Tag.vue'
+import ActiviteCard from '@/components/shared/ActiviteCard.vue'
+import ModalFullPage from '@/components/shared/ModalFullPage.vue'
+import FormulaireActivite from '@/components/admin/FormulaireActivite.vue'
 
 const activitesStore = useActivitesStore()
 
@@ -17,6 +17,7 @@ onMounted(() => {
 })
 
 const ouvrirModalEdition = (activite) => {
+  console.log(activite)
   modalEditionVisible.value = true
   activiteSelectionnee.value = activite
 }
@@ -45,10 +46,12 @@ const switchFormatAffichage = () => {
 </script>
 
 <template>
+  <!-- Possibilite sur grands ecrans de switcher de l'affichage tableau a affichage en cards -->
   <button @click="switchFormatAffichage" class="self-end my-4 hidden xl:block">
     {{ afficherEnTableau ? 'Afficher en card' : 'Afficher en tableau' }}
   </button>
-  <!-- Table pourrait etre affiche sur tres grands ecrans : xl:block -->
+
+  <!-- Affichage en tableau (dispo sur grands ecrans) -->
   <table v-if="afficherEnTableau" class="hidden xl:block">
     <thead>
       <tr>
@@ -70,7 +73,7 @@ const switchFormatAffichage = () => {
         <td>{{ activite.description }}</td>
         <td>{{ activite.date }}</td>
         <td>{{ activite.heure }}</td>
-        <td>{{ activite.prix }}</td>
+        <td>{{ activite.prix }}$</td>
         <td>
           <Tag :text="activite.type"></Tag>
         </td>
@@ -85,9 +88,10 @@ const switchFormatAffichage = () => {
     </tbody>
   </table>
 
+  <!-- Affichage en cards -->
   <div class="block" :class="{ 'xl:hidden': afficherEnTableau }">
-    <div v-for="activite in activitesStore.activites" :key="activite.id">
-      <CardActivite
+    <div v-for="(activite, index) in activitesStore.activites" :key="activite.id">
+      <ActiviteCard
         :nom="activite.nom"
         :imgUrl="activite.imgUrl"
         :description="activite.description"
@@ -96,14 +100,17 @@ const switchFormatAffichage = () => {
         :prix="activite.prix"
         :type="activite.type"
         :activiteId="activite.id"
+        :darkTheme="index % 2 === 0"
+        :inOrder="index % 2 === 0"
       >
-        <button @click="ouvrirModalEdition(activite)">Editer</button>
-        <button @click="supprimerActivite(activite.id)">Supprimer</button>
-      </CardActivite>
+        <button class="mx-auto xl:mx-0" @click="ouvrirModalEdition(activite)">Editer</button>
+        <button class="mx-auto xl:mx-0" @click="supprimerActivite(activite.id)">Supprimer</button>
+      </ActiviteCard>
     </div>
   </div>
 
-  <ModalFlottant v-if="modalEditionVisible">
+  <!-- Modal d'edition d'une activite - triggered par le bouton 'editer' une activite -->
+  <ModalFullPage v-if="modalEditionVisible">
     <button @click="fermerModalEdition">x</button>
     <FormulaireActivite
       :nom="activiteSelectionnee.nom"
@@ -116,7 +123,7 @@ const switchFormatAffichage = () => {
       :activiteId="activiteSelectionnee.id"
       :soumettreForm="editerActivite"
     ></FormulaireActivite>
-  </ModalFlottant>
+  </ModalFullPage>
 </template>
 
 <style scoped>

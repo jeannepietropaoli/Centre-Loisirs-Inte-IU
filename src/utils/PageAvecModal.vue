@@ -1,5 +1,5 @@
 <script setup>
-import SectionModal from '@/utils/SectionModal.vue'
+import SectionModal from '@/components/shared/SectionAvecModal.vue'
 import bgImage from '../assets/banner-v3.jpg'
 </script>
 
