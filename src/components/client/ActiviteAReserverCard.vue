@@ -51,26 +51,30 @@ const supprimerActiviteDuPanier = (produitId) => {
     :heure="heure"
     :prix="prix"
     :type="type"
-    :activiteId="id"
+    :activiteId="activiteId"
     :darkTheme="darkTheme"
     :inOrder="inOrder"
-  >
-    <RouterLink to="connexion" class="button mx-auto xl:mx-0" v-if="!authentificationStore.connecte"
-      >Connectez-vous pour reserver</RouterLink
-    >
-    <button
-      class="mx-auto xl:mx-0"
-      v-if="authentificationStore.connecte && !dejaDansLePanier(activite.id)"
-      @click="ajouterActiviteAuPanier(activite)"
-    >
-      Reserver
-    </button>
-    <button
-      class="mx-auto xl:mx-0"
-      v-if="authentificationStore.connecte && dejaDansLePanier(activite.id)"
-      @click="supprimerActiviteDuPanier(activite.id)"
-    >
-      Annuler la reservation
-    </button>
+    ><div>
+      <RouterLink
+        to="connexion"
+        class="button mx-auto xl:mx-0"
+        v-if="!authentificationStore.connecte"
+        >Connectez-vous pour reserver</RouterLink
+      >
+      <button
+        class="mx-auto xl:mx-0"
+        v-if="authentificationStore.connecte && !dejaDansLePanier(activite.id)"
+        @click="ajouterActiviteAuPanier(activite)"
+      >
+        Reserver
+      </button>
+      <button
+        class="mx-auto xl:mx-0"
+        v-if="authentificationStore.connecte && dejaDansLePanier(activite.id)"
+        @click="supprimerActiviteDuPanier(activite.id)"
+      >
+        Annuler la reservation
+      </button>
+    </div>
   </ActiviteCard>
 </template>

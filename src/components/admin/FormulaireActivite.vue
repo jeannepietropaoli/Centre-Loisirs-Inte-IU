@@ -6,10 +6,10 @@ const props = defineProps({
   description: String,
   date: String,
   heure: String,
-  prix: String,
+  prix: Number,
   imgUrl: String,
   activiteId: Number,
-  type: Number,
+  type: String,
   editerActivite: Function,
   titre: String,
   soumettreForm: Function,
@@ -216,7 +216,7 @@ const validerForm = () => {
 
     <div class="form__input-group">
       <label for="nom">Prix</label>
-      <input type="number" id="prix" v-model="prixInput" class="form__input" />
+      <input type="number" id="prix" step="0.01" v-model="prixInput" class="form__input" />
       <div class="form__error-message">{{ erreurs.prix }}</div>
     </div>
 

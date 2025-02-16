@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { useActivitesStore } from '@/store/storeActivites'
 import TableauActivitesAdmin from '@/components/admin/TableauActivitesAdmin.vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import ModalFullPage from '@/components/shared/ModalFullPage.vue'
 import FormulaireActivite from '@/components/admin/FormulaireActivite.vue'
+import { useAdminStore } from '@/store/storeAdmin'
+import router from '@/router'
 
 const activitesStore = useActivitesStore()
+const adminStore = useAdminStore()
 
 const modalAjoutVisible = ref(false)
 
@@ -22,6 +25,12 @@ const ajouterActivite = async (activite) => {
   fermerModalAjout()
   alert(activitesStore.message)
 }
+
+onMounted(() => {
+  if (!adminStore.adminConnecte) {
+    router.push({ name: 'connexion-admin' })
+  }
+})
 </script>
 
 <template>

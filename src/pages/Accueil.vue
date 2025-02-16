@@ -1,6 +1,6 @@
 <script setup>
 import SectionAvecModal from '@/components/shared/SectionAvecModal.vue'
-import bgImage from '@/assets/banner-v3.jpg'
+import bgImage from '@/assets/img/banner-v3.jpg'
 </script>
 
 <template>

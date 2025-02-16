@@ -1,5 +1,5 @@
 <script setup>
-import bgImgDefaut from '@/assets/banner-v3.jpg'
+import bgImgDefaut from '@/assets/img/banner-v3.jpg'
 
 const props = defineProps({
   bgImg: String,
@@ -33,8 +33,11 @@ section {
   position: absolute;
   object-fit: cover;
   object-position: center;
-  inset: 0;
-  max-height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  left: 0;
+  height: 100%;
   width: 100%;
   z-index: 0;
 }

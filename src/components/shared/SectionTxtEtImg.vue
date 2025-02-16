@@ -5,7 +5,7 @@ const props = defineProps({
   title: String,
   imgUrl: String,
   imgAlt: String,
-  darkTheme: String,
+  darkTheme: Boolean,
   inOrder: Boolean,
 })
 </script>

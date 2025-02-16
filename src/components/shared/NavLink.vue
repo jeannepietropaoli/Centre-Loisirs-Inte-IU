@@ -6,7 +6,7 @@ const props = defineProps({
 
 <template>
   <div class="nav-link-container group">
-    <img src="@/assets/arrow.png" class="nav-link__ornament" alt="ornement" />
+    <img src="@/assets/img/arrow.png" class="nav-link__ornament" alt="ornement" />
     <RouterLink :to="link.path" class="nav-link__a">{{ link.name }}</RouterLink>
   </div>
 </template>

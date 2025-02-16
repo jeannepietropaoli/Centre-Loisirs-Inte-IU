@@ -1,9 +1,13 @@
 <template>
   <section class="hero-section">
-    <img src="@/assets/banner-v3.jpg" alt="Photo velos de montagne" class="hero-section__bg-img" />
+    <img
+      src="@/assets/img/banner-v3.jpg"
+      alt="Photo velos de montagne"
+      class="hero-section__bg-img"
+    />
     <div class="hero-section__containercontainer">
       <div class="animated-title bebas-neue-regular animated-title">
-        <img src="@/assets/arrow.png" alt="" class="w-20 animated-title__item" />
+        <img src="@/assets/img/arrow.png" alt="" class="w-20 animated-title__item" />
         <p class="animated-title__item text-[#f4ead9]">BIENVENUE A</p>
         <p class="animated-title__item text-[#f4ead9]">LA PISTE VERTE</p>
       </div>

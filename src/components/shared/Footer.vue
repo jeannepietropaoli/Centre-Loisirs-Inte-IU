@@ -9,8 +9,8 @@
             href="https://github.com/jeannepietropaoli"
             target="_blank"
             class="footer__link text-link"
-            ><img src="@/assets/github-g-trs.png" alt="Logo github" class="footer__logo" /> Jeanne
-            Pietropaoli</a
+            ><img src="@/assets/img/github-g-trs.png" alt="Logo github" class="footer__logo" />
+            Jeanne Pietropaoli</a
           >
         </p>
       </div>

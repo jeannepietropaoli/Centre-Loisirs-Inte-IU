@@ -1,6 +1,7 @@
 <script setup>
 import { useAuthentificationStore } from '@/store/storeAuthentfication'
 import NavLink from '@/components/shared/NavLink.vue'
+import Profile from './Profile.vue'
 
 const authentificationStore = useAuthentificationStore()
 

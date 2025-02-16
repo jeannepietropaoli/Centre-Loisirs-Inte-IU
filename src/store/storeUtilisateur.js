@@ -1,7 +1,7 @@
 import { updateProfile } from 'firebase/auth'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import photoProfileParDefaut from '@/assets/account.png'
+import photoProfileParDefaut from '@/assets/img/account.png'
 import { doc, setDoc, getDocs, collection } from 'firebase/firestore'
 import { db } from '@/firebase'
 

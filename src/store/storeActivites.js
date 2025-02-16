@@ -8,18 +8,23 @@ export const useActivitesStore = defineStore('activite', () => {
 
   const getActivites = async () => {
     const { fetchDataApi } = useApi(
-      'http://localhost/api-centre-de-loisirs/api/activites/',
+      'https://api.pisteverte.jeannepietropaoli.dev/api/activites/',
       'GET',
       null,
     )
     const data = await fetchDataApi()
     activites.value = data.activites
+    activites.value = activites.value.map((activite) => ({
+      ...activite,
+      id: Number(activite.id),
+      prix: parseFloat(activite.prix),
+    }))
   }
 
   const editerActivite = async (id, activite) => {
     const activiteJson = JSON.stringify(activite)
     const { fetchDataApi } = useApi(
-      `http://localhost/api-centre-de-loisirs/api/activites/?id=${id}`,
+      `https://api.pisteverte.jeannepietropaoli.dev/api/activites/?id=${id}`,
       'PUT',
       activiteJson,
     )
@@ -30,7 +35,7 @@ export const useActivitesStore = defineStore('activite', () => {
 
   const supprimerActivite = async (id) => {
     const { fetchDataApi } = useApi(
-      `http://localhost/api-centre-de-loisirs/api/activites/?id=${id}`,
+      `https://api.pisteverte.jeannepietropaoli.dev/api/activites/?id=${id}`,
       'DELETE',
       null,
     )
@@ -42,7 +47,7 @@ export const useActivitesStore = defineStore('activite', () => {
   const ajouterActivite = async (activite) => {
     const activiteJson = JSON.stringify(activite)
     const { fetchDataApi } = useApi(
-      `http://localhost/api-centre-de-loisirs/api/activites/`,
+      `https://api.pisteverte.jeannepietropaoli.dev/api/activites/`,
       'POST',
       activiteJson,
     )

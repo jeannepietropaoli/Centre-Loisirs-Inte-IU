@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
-import logo from '@/assets/logo-v3.png'
+import logo from '@/assets/img/logo-v3.png'
 import { ref } from 'vue'
 import MobileMenuBtn from '@/components/shared/MobileMenuBtn.vue'
 import MobileMenu from '@/components/shared/MobileMenu.vue'
@@ -23,7 +23,7 @@ const props = defineProps({
       <!-- Nav = Logo + (Bouton menu mobile || menu grands ecrans) -->
       <div class="container nav__logo-container">
         <!-- Logo -->
-        <RouterLink to="accueil" class="nav__img-link"
+        <RouterLink :to="{ name: 'app' }" class="nav__img-link"
           ><img class="nav__logo" :src="logo" alt="Logo" />
         </RouterLink>
 
