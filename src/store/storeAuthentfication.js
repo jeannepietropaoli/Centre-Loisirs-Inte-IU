@@ -8,8 +8,6 @@ import { auth, provider } from '@/firebase'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { useUtilisateurStore } from './storeUtilisateur'
-import { doc, setDoc, getDoc } from 'firebase/firestore'
-import { db } from '@/firebase'
 
 export const useAuthentificationStore = defineStore('authentification', () => {
   const connecte = ref(false)
@@ -35,6 +33,11 @@ export const useAuthentificationStore = defineStore('authentification', () => {
     try {
       const res = await signInWithPopup(auth, provider)
       await utilisateurStore.setUtilisateur(res.user)
+      await utilisateurStore.ajouterUtilisateurAFirestore(
+        res.user,
+        res.user.displayName,
+        res.user.photoURL,
+      ) // ajoute l'utilisateur a Firestore
       connecte.value = true
       erreurAuth.value = null
     } catch (error) {

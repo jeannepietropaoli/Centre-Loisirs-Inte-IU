@@ -25,7 +25,7 @@ const types = [
 ]
 
 const getTypeId = (type) => {
-  return types.find((t) => t.nom === type).id
+  return types.find((t) => t.nom === type)?.id || 1
 }
 
 const nomInput = ref(props.nom ? props.nom : '')
@@ -54,6 +54,7 @@ const activite = computed(() => {
     prix: prixInput.value,
     imgUrl: imgUrlInput.value,
     type: typeInput.value,
+    id: props.activiteId ? props.activiteId : null,
   }
 })
 
@@ -169,7 +170,7 @@ const validerForm = () => {
       <label for="nom">Nom</label>
       <input
         type="text"
-        id="username"
+        id="nom"
         v-model="nomInput"
         placeholder="nom de l'activite..."
         class="form__input"
@@ -190,7 +191,7 @@ const validerForm = () => {
     </div>
 
     <div class="form__input-group">
-      <label for="nom">Description</label>
+      <label for="description">Description</label>
       <textarea
         id="description"
         v-model="descriptionInput"
@@ -203,25 +204,25 @@ const validerForm = () => {
     </div>
 
     <div class="form__input-group">
-      <label for="nom">Date</label>
+      <label for="date">Date</label>
       <input type="date" id="date" v-model="dateInput" class="form__input" />
       <div class="form__error-message">{{ erreurs.date }}</div>
     </div>
 
     <div class="form__input-group">
-      <label for="nom">Heure</label>
+      <label for="heure">Heure</label>
       <input type="time" id="heure" v-model="heureInput" class="form__input" />
       <div class="form__error-message">{{ erreurs.heure }}</div>
     </div>
 
     <div class="form__input-group">
-      <label for="nom">Prix</label>
+      <label for="prix">Prix</label>
       <input type="number" id="prix" step="0.01" v-model="prixInput" class="form__input" />
       <div class="form__error-message">{{ erreurs.prix }}</div>
     </div>
 
     <div class="form__input-group">
-      <label for="nom">Image url</label>
+      <label for="imgUrl">Image url</label>
       <input
         type="text"
         id="imgUrl"

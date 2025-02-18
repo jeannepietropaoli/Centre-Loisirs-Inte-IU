@@ -5,7 +5,7 @@
     <div class="erreur-container container">
       <h1>Erreur :(</h1>
       <p class="erreur-container__text">La page que vous cherchez n'existe pas.</p>
-      <RouterLink class="button" :to="{ name: 'accueil-client' }">Retourner a l'accueil</RouterLink>
+      <RouterLink class="button" :to="{ name: 'accueil-client' }">Retourner à l'accueil</RouterLink>
     </div>
   </section>
 </template>

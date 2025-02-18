@@ -3,34 +3,18 @@ import { useActivitesStore } from '@/store/storeActivites'
 import { onMounted, ref } from 'vue'
 import Tag from '@/components/shared/Tag.vue'
 import ActiviteCard from '@/components/shared/ActiviteCard.vue'
-import ModalFullPage from '@/components/shared/ModalFullPage.vue'
-import FormulaireActivite from '@/components/admin/FormulaireActivite.vue'
 
 const activitesStore = useActivitesStore()
 
-const modalEditionVisible = ref(false)
-const activiteSelectionnee = ref(null)
+const props = defineProps({
+  ouvrirModal: Function,
+})
+
 const afficherEnTableau = ref(false)
 
 onMounted(() => {
   activitesStore.getActivites()
 })
-
-const ouvrirModalEdition = (activite) => {
-  console.log(activite)
-  modalEditionVisible.value = true
-  activiteSelectionnee.value = activite
-}
-
-const fermerModalEdition = () => {
-  modalEditionVisible.value = false
-}
-
-const editerActivite = async (activite) => {
-  await activitesStore.editerActivite(activiteSelectionnee.value.id, activite)
-  fermerModalEdition()
-  alert(activitesStore.message)
-}
 
 const supprimerActivite = async (activiteId) => {
   const confirmation = confirm('Voulez-vous vraiment supprimer cette activite ?')
@@ -46,12 +30,12 @@ const switchFormatAffichage = () => {
 </script>
 
 <template>
-  <!-- Possibilite sur grands ecrans de switcher de l'affichage tableau a affichage en cards -->
+  <!-- Possibilité sur grands écrans de switcher de l'affichage tableau à affichage en cards -->
   <button @click="switchFormatAffichage" class="self-end my-4 hidden xl:block">
     {{ afficherEnTableau ? 'Afficher en card' : 'Afficher en tableau' }}
   </button>
 
-  <!-- Affichage en tableau (dispo sur grands ecrans) -->
+  <!-- Affichage en tableau (dispo sur grands écrans) -->
   <table v-if="afficherEnTableau" class="hidden xl:block">
     <thead>
       <tr>
@@ -77,11 +61,15 @@ const switchFormatAffichage = () => {
         <td>
           <Tag :text="activite.type"></Tag>
         </td>
-        <td class="w-[200px]">
-          <img :src="activite.imgUrl" alt="Photo de l'activite" />
+        <td class="w-[275px]">
+          <img
+            :src="activite.imgUrl"
+            alt="Photo de l'activite"
+            class="w-full aspect-[16/9] object-cover"
+          />
         </td>
-        <td class="flex flex-col gap-2 min-h-full">
-          <button @click="ouvrirModalEdition(activite)">Editer</button>
+        <td>
+          <button @click="ouvrirModal(activite)">Editer</button>
           <button @click="supprimerActivite(activite.id)">Supprimer</button>
         </td>
       </tr>
@@ -103,27 +91,11 @@ const switchFormatAffichage = () => {
         :darkTheme="index % 2 === 0"
         :inOrder="index % 2 === 0"
       >
-        <button class="mx-auto xl:mx-0" @click="ouvrirModalEdition(activite)">Editer</button>
+        <button class="mx-auto xl:mx-0" @click="ouvrirModal(activite)">Editer</button>
         <button class="mx-auto xl:mx-0" @click="supprimerActivite(activite.id)">Supprimer</button>
       </ActiviteCard>
     </div>
   </div>
-
-  <!-- Modal d'edition d'une activite - triggered par le bouton 'editer' une activite -->
-  <ModalFullPage v-if="modalEditionVisible">
-    <button @click="fermerModalEdition">x</button>
-    <FormulaireActivite
-      :nom="activiteSelectionnee.nom"
-      :imgUrl="activiteSelectionnee.imgUrl"
-      :description="activiteSelectionnee.description"
-      :date="activiteSelectionnee.date"
-      :heure="activiteSelectionnee.heure"
-      :prix="activiteSelectionnee.prix"
-      :type="activiteSelectionnee.type"
-      :activiteId="activiteSelectionnee.id"
-      :soumettreForm="editerActivite"
-    ></FormulaireActivite>
-  </ModalFullPage>
 </template>
 
 <style scoped>
@@ -136,5 +108,9 @@ td,
 th {
   border: 1px solid lightgray;
   padding: 12px;
+}
+
+table button {
+  margin: 5px 0;
 }
 </style>

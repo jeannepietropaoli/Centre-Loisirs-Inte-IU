@@ -33,10 +33,8 @@ const sInscrireParEmail = async () => {
 }
 
 const seConnecterAvecGoogle = async () => {
-  if (formulaireValide()) {
-    await authentificationStore.seConnecterAvecGoogle()
-    validerConnexion()
-  }
+  await authentificationStore.seConnecterAvecGoogle()
+  validerConnexion()
 }
 
 const validerConnexion = () => {
@@ -108,8 +106,8 @@ const formulaireValide = () => {
 
   <form class="form" action="" ref="form" v-on:submit.prevent="sInscrireParEmail">
     <div class="form__input-group">
-      <label for="nom">Nom</label>
-      <input class="form__input" type="text" id="nom" v-model="nomInput" />
+      <label for="nom">Nom*</label>
+      <input class="form__input" type="text" id="nom" v-model="nomInput" @input="nomValide" />
       <div class="form__error-message" v-if="formulaireErreurs.nom">
         {{ formulaireErreurs.nom }}
       </div>
@@ -119,15 +117,21 @@ const formulaireValide = () => {
       <input class="form__input" type="text" id="profileImg" v-model="profileImgInput" />
     </div>
     <div class="form__input-group">
-      <label for="email">Email</label>
-      <input class="form__input" type="email" id="email" v-model="emailInput" />
+      <label for="email">Email*</label>
+      <input
+        class="form__input"
+        type="email"
+        id="email"
+        v-model="emailInput"
+        @input="emailInputValide"
+      />
       <div class="form__error-message" v-if="formulaireErreurs.email">
         {{ formulaireErreurs.email }}
       </div>
     </div>
     <div class="form__input-group">
-      <label for="mdp">Mot de passe</label>
-      <input class="form__input" type="password" id="mdp" v-model="mdpInput" />
+      <label for="mdp">Mot de passe*</label>
+      <input class="form__input" type="password" id="mdp" v-model="mdpInput" @input="mdpValide" />
       <div class="form__error-message" v-if="formulaireErreurs.mdp">
         {{ formulaireErreurs.mdp }}
       </div>
@@ -141,7 +145,7 @@ const formulaireValide = () => {
   <button v-on:click="seConnecterAvecGoogle">Se connecter avec Google</button>
 
   <p>
-    Vous avez deja un compte ? Connectez-vous
+    Vous avez déjà un compte ? Connectez-vous
     <RouterLink to="connexion" class="text-link">ici</RouterLink>.
   </p>
 </template>

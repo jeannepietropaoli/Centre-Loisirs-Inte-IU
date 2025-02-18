@@ -20,7 +20,7 @@ const mainNavLinks = [
 
 <template>
   <Header :mainNavLinks="adminStore.adminConnecte ? mainNavLinks : []">
-    <button v-if="adminStore.adminConnecte" @click="gererDeconnexion">Se deconnecter</button>
+    <button v-if="adminStore.adminConnecte" @click="gererDeconnexion">Se déconnecter</button>
   </Header>
 
   <div class="main">

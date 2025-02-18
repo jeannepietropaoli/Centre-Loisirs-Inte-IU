@@ -10,7 +10,7 @@ const props = defineProps({
 
 <template>
   <section className="order-summary">
-    <h3 className="secondary-title">Resume de la commande</h3>
+    <h3 className="secondary-title">Résumé de la commande</h3>
     <div className="order-summary__category">
       <h4>Sous-total</h4>
       <p>{{ panierStore.totalPanierAvantTaxes }}$</p>

@@ -28,9 +28,9 @@ const props = defineProps({
     <Tag :text="type"></Tag>
     <p>{{ description }}</p>
     <div class="flex flex-col gap-2">
-      <p v-if="date">Date: {{ date }}</p>
-      <p v-if="heure">Heure: {{ heure }}</p>
-      <p v-if="heure">Prix: {{ prix }}$</p>
+      <p v-if="date"><span class="bold">Date :</span> {{ date }}</p>
+      <p v-if="heure"><span class="bold">Heure :</span> {{ heure }}</p>
+      <p v-if="heure"><span class="bold">Prix :</span> {{ prix }}$</p>
     </div>
     <!-- boutons d'actions -->
     <slot></slot>

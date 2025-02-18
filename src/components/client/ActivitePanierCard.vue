@@ -24,7 +24,7 @@ const supprimerDuPanier = () => {
   <div class="card">
     <img :src="imgUrl" alt="Photo de l'activite" class="card__img" />
     <div class="card__details">
-      <p>{{ nom }}</p>
+      <p class="bold">{{ nom }}</p>
       <p>{{ date }}</p>
       <p>{{ heure }}</p>
     </div>
@@ -42,7 +42,7 @@ const supprimerDuPanier = () => {
   background-color: #f8fafc;
   padding: 1.5rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 0.5rem;
   justify-content: space-between;
   align-items: center;
@@ -54,10 +54,13 @@ const supprimerDuPanier = () => {
 }
 
 .card__img {
-  width: 6rem;
-  aspect-ratio: 1/1;
-  object-fit: cover;
   border-radius: 0.375rem;
+  width: 40%;
+  height: 175px;
+  object-fit: cover;
+  object-position: center;
+  margin-right: 30px;
+  max-width: 500px;
 }
 
 .card__details {
@@ -67,39 +70,47 @@ const supprimerDuPanier = () => {
   text-align: center;
   flex-grow: 1;
   margin: 0 20px;
+  text-align: left;
 }
 
 .card__price {
-  text-align: center;
-  margin-right: 0;
+  text-align: left;
+  margin-right: 20px;
 }
 
 .card__btn {
-  margin: 0 auto;
+  margin: 0 0;
 }
 
-@media (min-width: 640px) {
+@media (max-width: 768px) {
+  .card__img {
+    width: 30%;
+  }
+}
+
+@media (max-width: 640px) {
   .card {
-    flex-direction: row;
+    flex-direction: column;
   }
 
   .card__details {
-    text-align: left;
+    text-align: center;
   }
 
   .card__price {
-    text-align: left;
-    margin-right: 20px;
+    text-align: center;
+    margin-right: 0;
   }
 
   .card__btn {
-    margin: 0 0;
+    margin: 0 auto;
   }
 }
 
-@media (min-width: 768px) {
+@media (max-width: 640px) {
   .card__img {
-    width: 10rem;
+    width: 100%;
+    margin: 0 auto;
   }
 }
 </style>

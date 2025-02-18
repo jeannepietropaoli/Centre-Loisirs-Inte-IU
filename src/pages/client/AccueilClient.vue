@@ -25,7 +25,7 @@ onMounted(() => {
 
   <!-- Section Presentation -->
   <SectionTxtEtImg
-    title="Nos activites"
+    title="Nos activités"
     imgUrl="https://plus.unsplash.com/premium_photo-1686090450800-d6ca456243c7?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     imgAlt="Photo de notre centre de loisirs"
     :inOrder="true"
@@ -40,15 +40,15 @@ onMounted(() => {
       d’autres expériences adaptées à chacun. Notre mission est simple : rendre la nature et ses
       bienfaits accessibles à tous, dans un environnement convivial et ressourçant. Préparez-vous à
       vivre des moments uniques, seul, en famille ou entre amis. Respirez, explorez, amusez-vous !
-      Decouvrez nos activites et reservez maintenant.
+      Découvrez nos activités et réservez maintenant.
     </p>
     <div class="presentation__details">
       <p class="text-sm">
-        **Pour pouvoir reserver une activite, il faut etre connecte a votre compte.
+        **Pour pouvoir réserver une activité, il faut etre connecté à votre compte.
       </p>
       <p class="text-sm">
-        ***La reservation des activites ne peut se faire que pour la personne connectee. Pour
-        reserver plusieurs fois, veuillez utiliser le compte de chacun des participants.
+        ***La réservation des activités ne peut se faire que pour la personne connectée. Pour
+        réserver plusieurs fois, veuillez utiliser le compte de chacun des participants.
       </p>
     </div>
   </SectionTxtEtImg>

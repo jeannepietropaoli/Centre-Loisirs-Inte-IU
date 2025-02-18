@@ -23,12 +23,12 @@ const confirmerCommande = () => {
   <section>
     <div class="container section-container section-container--flex-col panier">
       <div v-if="panierVide" class="panier__message">
-        <h2 v-if="commandeConfirmee">Votre commande est confirmee, merci pour votre achat !</h2>
+        <h2 v-if="commandeConfirmee">Votre commande est confirmée, merci pour votre achat !</h2>
         <h3>Votre panier est vide.</h3>
         <RouterLink v-if="authentificationStore.connecte" to="accueil" class="button">
-          Faire le plein d'activites
+          Faire le plein d'activités
         </RouterLink>
-        <RouterLink v-else to="connexion" class="button"> Se connecter pour reserver </RouterLink>
+        <RouterLink v-else to="connexion" class="button"> Se connecter pour réserver </RouterLink>
       </div>
       <div v-else class="panier__contenu">
         <ul class="panier__items-list">

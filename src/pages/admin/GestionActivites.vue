@@ -10,19 +10,38 @@ import router from '@/router'
 const activitesStore = useActivitesStore()
 const adminStore = useAdminStore()
 
-const modalAjoutVisible = ref(false)
+const modalVisible = ref(false)
+const edition = ref(false)
+const ajout = ref(false)
+const activiteSelectionnee = ref(null)
 
-const ouvrirModalAjout = () => {
-  modalAjoutVisible.value = true
+const ouvrirModalEdition = (activite) => {
+  activiteSelectionnee.value = activite
+  modalVisible.value = true
+  ajout.value = false
+  edition.value = true
 }
 
-const fermerModalAjout = () => {
-  modalAjoutVisible.value = false
+const ouvrirModalAjout = () => {
+  activiteSelectionnee.value = null
+  modalVisible.value = true
+  edition.value = false
+  ajout.value = true
+}
+
+const fermerModal = () => {
+  modalVisible.value = false
 }
 
 const ajouterActivite = async (activite) => {
   await activitesStore.ajouterActivite(activite)
-  fermerModalAjout()
+  fermerModal()
+  alert(activitesStore.message)
+}
+
+const editerActivite = async (activite) => {
+  await activitesStore.editerActivite(activite.id, activite)
+  fermerModal()
   alert(activitesStore.message)
 }
 
@@ -36,22 +55,34 @@ onMounted(() => {
 <template>
   <section>
     <div class="container section-container section-container--flex-col">
-      <h2 class="font-semibold text-xl">Gestion activites</h2>
+      <h2 class="font-semibold text-xl">Gestion activités</h2>
 
-      <button @click="ouvrirModalAjout" class="m-4">Ajouter une activite</button>
+      <button @click="ouvrirModalAjout" class="m-4">Ajouter une activité</button>
 
       <h2>Voici la liste de toutes les activites.</h2>
-      <TableauActivitesAdmin></TableauActivitesAdmin>
+      <TableauActivitesAdmin :ouvrirModal="ouvrirModalEdition"></TableauActivitesAdmin>
 
-      <ModalFullPage v-if="modalAjoutVisible">
-        <button @click="fermerModalAjout">x</button>
+      <ModalFullPage v-if="modalVisible">
+        <button @click="fermerModal">x</button>
         <FormulaireActivite
-          titre="Ajouter une activite"
-          :soumettreForm="ajouterActivite"
+          titre="Gerez l'activite"
+          :soumettreForm="edition ? editerActivite : ajouterActivite"
+          :nom="activiteSelectionnee?.nom"
+          :imgUrl="activiteSelectionnee?.imgUrl"
+          :description="activiteSelectionnee?.description"
+          :date="activiteSelectionnee?.date"
+          :heure="activiteSelectionnee?.heure"
+          :prix="activiteSelectionnee?.prix"
+          :type="activiteSelectionnee?.type"
+          :activiteId="activiteSelectionnee?.id"
         ></FormulaireActivite>
       </ModalFullPage>
     </div>
   </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+h2 {
+  margin: 15px 0;
+}
+</style>

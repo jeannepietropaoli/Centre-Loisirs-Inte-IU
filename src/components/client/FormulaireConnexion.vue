@@ -21,13 +21,14 @@ const seConnecterAvecGoogle = async () => {
 const validerConnexion = () => {
   if (authentificationStore.connecte) {
     // si connexion reussie
+    console.log('redirection')
     router.push({ name: 'accueil-client' })
   }
 }
 </script>
 
 <template>
-  <h2 class="form-section__title">Connexion a votre compte PISTE VERTE</h2>
+  <h2 class="form-section__title">Connexion à votre compte PISTE VERTE</h2>
 
   <form class="form" action="" v-on:submit.prevent="seConnecterParEmail">
     <div class="form__input-group">

@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="footer__container container">
-      <p>Fevrier 2025 - Integration Interface Utilisateur</p>
+      <p>Février 2025 - Intégration Interface Utilisateur</p>
       <div>
         <p class="footer__credits">
           Créé par

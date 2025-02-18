@@ -53,6 +53,10 @@
   color: #007a3d;
 }
 
+.bold {
+  font-weight: 700;
+}
+
 /* formulaires */
 
 .form-section__title {
@@ -93,6 +97,10 @@
   line-height: 2rem;
   font-weight: 700;
   margin-bottom: 2rem;
+}
+
+form label {
+  font-weight: 600;
 }
 
 /* boutons */

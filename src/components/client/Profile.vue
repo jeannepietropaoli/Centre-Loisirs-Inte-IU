@@ -16,7 +16,7 @@ const gererDeconnexion = () => {
 <template>
   <div class="profile">
     <p class="profile__txt">Bienvenue, {{ utilisateurStore.utilisateur.displayName }} !</p>
-    <button v-on:click="gererDeconnexion">Se deconnecter</button>
+    <button v-on:click="gererDeconnexion">Se déconnecter</button>
   </div>
 </template>
 

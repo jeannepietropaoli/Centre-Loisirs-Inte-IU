@@ -59,7 +59,7 @@ const supprimerActiviteDuPanier = (produitId) => {
         to="connexion"
         class="button mx-auto xl:mx-0"
         v-if="!authentificationStore.connecte"
-        >Connectez-vous pour reserver</RouterLink
+        >Connectez-vous pour réserver</RouterLink
       >
       <button
         class="mx-auto xl:mx-0"
@@ -73,7 +73,7 @@ const supprimerActiviteDuPanier = (produitId) => {
         v-if="authentificationStore.connecte && dejaDansLePanier(activite.id)"
         @click="supprimerActiviteDuPanier(activite.id)"
       >
-        Annuler la reservation
+        Annuler la réservation
       </button>
     </div>
   </ActiviteCard>
