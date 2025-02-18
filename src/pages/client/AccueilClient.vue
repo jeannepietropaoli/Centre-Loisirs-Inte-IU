@@ -44,7 +44,7 @@ onMounted(() => {
     </p>
     <div class="presentation__details">
       <p class="text-sm">
-        **Pour pouvoir réserver une activité, il faut etre connecté à votre compte.
+        **Pour pouvoir réserver une activité, il faut être connecté à votre compte.
       </p>
       <p class="text-sm">
         ***La réservation des activités ne peut se faire que pour la personne connectée. Pour

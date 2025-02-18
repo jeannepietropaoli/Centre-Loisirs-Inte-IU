@@ -85,9 +85,14 @@ const validerDescription = () => {
 }
 
 const validerDate = () => {
+  const dateActuelle = new Date().getTime()
+  const dateActivite = new Date(dateInput.value).getTime()
+
   if (dateInput.value.trim().length === 0 || dateInput.value === null) {
     erreurs.value.date = 'La date est requise'
     return false
+  } else if (dateActivite - dateActuelle < 0) {
+    erreurs.value.date = 'La date doit être ultérieure à la date actuelle'
   } else {
     erreurs.value.date = ''
     return true
@@ -167,20 +172,21 @@ const validerForm = () => {
   <h2 class="form__titre">{{ titre }}</h2>
   <form class="form" action="" v-on:submit.prevent="validerForm">
     <div class="form__input-group">
-      <label for="nom">Nom</label>
+      <label for="nom">Nom*</label>
       <input
         type="text"
         id="nom"
         v-model="nomInput"
         placeholder="nom de l'activite..."
         class="form__input"
+        @input="validerNom"
       />
       <div class="form__error-message">{{ erreurs.nom }}</div>
     </div>
 
     <div class="form__input-group">
-      <label for="type">Type</label>
-      <select v-model="typeInput" id="type" class="form__input">
+      <label for="type">Type*</label>
+      <select v-model="typeInput" id="type" class="form__input" @input="validerType">
         <option value="1">Randonnée</option>
         <option value="2">Kayak</option>
         <option value="3">Fitness</option>
@@ -191,7 +197,7 @@ const validerForm = () => {
     </div>
 
     <div class="form__input-group">
-      <label for="description">Description</label>
+      <label for="description">Description*</label>
       <textarea
         id="description"
         v-model="descriptionInput"
@@ -199,36 +205,51 @@ const validerForm = () => {
         class="form__input"
         cols="40"
         rows="12"
+        @input="validerDescription"
       ></textarea>
       <div class="form__error-message">{{ erreurs.description }}</div>
     </div>
 
     <div class="form__input-group">
-      <label for="date">Date</label>
-      <input type="date" id="date" v-model="dateInput" class="form__input" />
+      <label for="date">Date*</label>
+      <input type="date" id="date" v-model="dateInput" class="form__input" @input="validerDate" />
       <div class="form__error-message">{{ erreurs.date }}</div>
     </div>
 
     <div class="form__input-group">
-      <label for="heure">Heure</label>
-      <input type="time" id="heure" v-model="heureInput" class="form__input" />
+      <label for="heure">Heure*</label>
+      <input
+        type="time"
+        id="heure"
+        v-model="heureInput"
+        class="form__input"
+        @input="validerHeure"
+      />
       <div class="form__error-message">{{ erreurs.heure }}</div>
     </div>
 
     <div class="form__input-group">
-      <label for="prix">Prix</label>
-      <input type="number" id="prix" step="0.01" v-model="prixInput" class="form__input" />
+      <label for="prix">Prix*</label>
+      <input
+        type="number"
+        id="prix"
+        step="0.01"
+        v-model="prixInput"
+        class="form__input"
+        @input="validerPrix"
+      />
       <div class="form__error-message">{{ erreurs.prix }}</div>
     </div>
 
     <div class="form__input-group">
-      <label for="imgUrl">Image url</label>
+      <label for="imgUrl">Image url*</label>
       <input
         type="text"
         id="imgUrl"
         v-model="imgUrlInput"
         placeholder="url de l'image..."
         class="form__input"
+        @input="validerImgUrl"
       />
       <div class="form__error-message">{{ erreurs.imgUrl }}</div>
     </div>
