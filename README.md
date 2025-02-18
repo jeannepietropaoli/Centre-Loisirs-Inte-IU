@@ -1,23 +1,24 @@
 # Projet Centre de loisirs
 
-Eleve: Jeanne Pietropaoli
-Cours: Intégration Interface Utilisateur
+- Eleve: Jeanne Pietropaoli
+- Cours: Intégration Interface Utilisateur
 
 ## Notes
 
-Acces au compte admin:
-username: admin
-mdp: admindmp
+Accès au compte admin:
+
+- username: admin
+- mdp: admindmp
 
 ## Warning
 
-Projet en cours de développement et n'est pas encore disponible en ligne.
+Ce projet est en cours de développement et n'est pas encore disponible en ligne.
 
 Repo de l'API: https://github.com/jeannepietropaoli/TP3_Centre_loisirs_API
 
 ## Description
 
-Le but est de créer un site de présentation et réservation d'activités pour un centre de loisirs fictifs.
+Le but est de créer un site de présentation et réservation d'activités pour un centre de loisirs fictif.
 L'interface visuelle est libre.
 
 ## Objectifs
