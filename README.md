@@ -2,6 +2,7 @@
 
 - Eleve: Jeanne Pietropaoli
 - Cours: Intégration Interface Utilisateur
+- Lien repo Github (!changements possibles!) : https://github.com/jeannepietropaoli/Centre-Loisirs-Inte-IU
 
 ## Notes
 

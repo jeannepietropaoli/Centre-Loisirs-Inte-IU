@@ -102,7 +102,7 @@ const formulaireValide = () => {
 </script>
 
 <template>
-  <h2 class="form-section__title">Creez votre compte PISTE VERTE</h2>
+  <h2 class="form-section__title">Créez votre compte PISTE VERTE</h2>
 
   <form class="form" action="" ref="form" v-on:submit.prevent="sInscrireParEmail">
     <div class="form__input-group">
